@@ -1,39 +1,64 @@
 <!doctype html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Insert Title Here</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<!-- jquery for bootstrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<title>CMPUT 401 Assignment #3: Web Resume | Seth Bergen</title>
+		
+		<style>
+			.bg {
+				background-color: #eeeeee;
+			}
+			.container-fluid {
+				padding-top: 80px;
+				font-size: 60px;
+			}
+			.container-fluid2 {
+				font-size: 20px;
+			}
+		</style>
+	</head>
 
-
-  <!-- <link rel="stylesheet" href="style.css"> -->
-
-</head>
-
-<body>
-  <h1 id="name">Name</h1>
-  <p id="about">About</p>
-  <p id="education">Education</p>
-  <p id="skills">Skills</p>
-  <p id="work">Work</p>
-  <p id="contact">Contact</p>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>
-  $(window).on('load', function(){
-     // change the URL to your server URL here
-     $.getJSON("http://127.0.0.1:8000/api/person/1/", function (data) {
-          $("#name").text(data.data.attributes.name);
-          $("#about").text(data.data.attributes.about);
-          $("#education").text(data.data.attributes.education);
-          $("#skills").text(data.data.attributes.skills);
-          // Complete consuming the API data and updating the work and contact sections
-          // HINT: look at the above lines, jquery documentation, see what is the object returned
-     
-     
-
-     });
-  });
-  </script>
-</body>
+	<body class="bg">
+		<div class = "container-fluid text-center">
+			<p id="name">Name</p>
+		</div>
+		<div class = "container-fluid2 text-center">
+			<h2>About Me</h2>
+			<p id="about">About</p>
+			<h2>Skills</h2>
+			<p id="education">Education</p>
+			<h2>Skills</h2>
+			<p id="skills">Skills</p>
+			<h2>Work Experience</h2>
+			<p id="work">Work</p>
+			<h2>Contact</h2>
+			<p id="contact">Contact</p>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script>
+			$(window).on('load', function(){
+				$.getJSON("http://204.209.76.223:8000/api/person/1/", function (data) {
+					$("#name").text(data.data.attributes.name);
+					$("#about").text(data.data.attributes.about);
+					$("#education").text(data.data.attributes.education);
+					$("#skills").text(data.data.attributes.skills);
+					$("#work").text(data.data.attributes.work);
+					$("#contact").text(data.data.attributes.contact);
+				});
+			});
+		</script>
+	</body>
 </html>
